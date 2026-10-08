@@ -1,0 +1,94 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il mio catalogo serie</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0d0f12;color:#f5f5f5;font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:28px 18px 55px}
+h1{font-size:34px;margin:0 0 5px}.sub{color:#9da1aa;margin:0 0 18px}.toolbar{position:sticky;top:0;z-index:5;background:#0d0f12ee;backdrop-filter:blur(10px);padding:10px 0 14px;display:flex;gap:8px;flex-wrap:wrap}
+button.filter,button.more{border:0;border-radius:9px;padding:9px 12px;background:#24272e;color:#ddd;cursor:pointer}button.filter.active{background:#fff;color:#111}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}.card{position:relative;background:#181b20;border:1px solid #292d34;border-radius:15px;overflow:hidden}.card.hidden{display:none}
+.cover{height:370px;background:#272b33;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}.cover img{width:100%;height:100%;object-fit:cover}.fallbackTitle{display:none;text-align:center;padding:20px;font-size:25px;font-weight:bold}
+.remove{position:absolute;right:9px;top:9px;z-index:3;border:0;border-radius:50%;width:34px;height:34px;background:#111c;color:#fff;font-size:22px;cursor:pointer}
+.info{padding:16px}h2{margin:4px 0 9px;font-size:24px}.tag{font-size:12px;padding:5px 8px;border-radius:7px;background:#292d35;color:#bbb}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}.meta span{background:#252930;border-radius:7px;padding:6px 8px;font-size:12px}p{color:#d0d3d8;line-height:1.48;margin:0 0 13px}
+#compare{display:none;margin-top:35px}#compare.show{display:block}.tableWrap{overflow:auto;border:1px solid #292d34;border-radius:12px}table{border-collapse:collapse;width:100%;min-width:760px;background:#15181c}th,td{padding:11px;border-bottom:1px solid #292d34;text-align:left;font-size:13px}th{color:#aaa;background:#1c1f24}.legend{color:#888;font-size:12px;margin:8px 0 0}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:20;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.box{max-width:520px;width:100%;background:#191c21;border-radius:15px;padding:22px;border:1px solid #343840}.close{float:right;border:0;background:none;color:#fff;font-size:25px;cursor:pointer}
+.note{color:#777;font-size:12px;margin-top:25px}
+</style></head><body><main>
+<h1>📺 Il mio catalogo serie</h1><p class="sub">Netflix + Amazon Prime Video · catalogo personale · aggiornabile</p>
+<div class="toolbar">
+<button class="filter active" onclick="filterCards('Tutte',this)">Tutte</button><button class="filter" onclick="filterCards('Crime',this)">Crime</button><button class="filter" onclick="filterCards('Mistero',this)">Mistero</button><button class="filter" onclick="filterCards('Storica',this)">Storiche</button><button class="filter" onclick="filterCards('Vampiri',this)">Vampiri</button><button class="filter" onclick="showRemoved()">🗑️ Nascoste</button><button class="filter" onclick="restoreAll()">↩ Ripristina</button><button class="filter" onclick="document.getElementById('compare').classList.toggle('show')">📊 Confronta</button>
+</div>
+<section class="grid"><article class="card" data-category="Crime" data-title="banshee">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://m.media-amazon.com/images/S/pv-target-images/6163581d7761d6cae87598a6dc1bf7c7fb0e3b6b7da3d5c034232f1dcfced06b._UR2000%2C3000_CLs%7C2000%2C3000%7C/G/bundle/BottomRightCardGradient2x3.png%2C/G/01/digital/video/merch/subs/benefit-id/a-f/cinemax/logos/channel-logo-white.png%7C0%2C0%2C2000%2C3000%2B0%2C0%2C2000%2C3000%2B1514%2C2769%2C399%2C144_kvc536962bb237f16d6ce29204e105d5e5_.jpg" alt="Copertina Banshee" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Banshee</div></div>
+<div class="info"><span class="tag">Crime</span><h2>Banshee</h2>
+<div class="meta"><span>📺 Amazon Prime Video</span><span>📚 4 stagioni</span><span>⭐ 9,5/10</span></div>
+<p>Un ex detenuto assume l’identità del nuovo sceriffo di una città piena di criminalità e segreti. Tanta tensione, personaggi forti e una storia che continua davvero.</p><button class="more" onclick="showDetail('Banshee',5,5,4,3)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Crime" data-title="top boy">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://images.justwatch.com/poster/209747591/s718/Staffel-2.jpg" alt="Copertina Top Boy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Top Boy</div></div>
+<div class="info"><span class="tag">Crime</span><h2>Top Boy</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 5 stagioni totali</span><span>⭐ 9,3/10</span></div>
+<p>Criminalità, droga, potere e tradimenti nelle strade di Londra. Personaggi forti e una trama molto continuativa da una stagione all’altra.</p><button class="more" onclick="showDetail('Top Boy',5,4,5,2)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Crime" data-title="animal kingdom">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://media.senscritique.com/media/000020981694/0/animal_kingdom.jpg" alt="Copertina Animal Kingdom" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Animal Kingdom</div></div>
+<div class="info"><span class="tag">Crime</span><h2>Animal Kingdom</h2>
+<div class="meta"><span>📺 Amazon Prime Video</span><span>📚 6 stagioni</span><span>⭐ 9,2/10</span></div>
+<p>Un ragazzo entra nella famiglia della nonna, scoprendo un mondo di rapine, criminalità e lotte per il potere. La storia cresce molto nel tempo.</p><button class="more" onclick="showDetail('Animal Kingdom',5,5,5,2)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Mistero" data-title="bloodline">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://static.rogerebert.com/redactor_assets/pictures/550454ea592cb0600600006a/blood_key_005_h.jpg" alt="Copertina Bloodline" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Bloodline</div></div>
+<div class="info"><span class="tag">Mistero</span><h2>Bloodline</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 3 stagioni</span><span>⭐ 8,8/10</span></div>
+<p>Una famiglia apparentemente rispettabile nasconde segreti sempre più pesanti. Più psicologica, ma con mistero, tensione e atmosfera cupa.</p><button class="more" onclick="showDetail('Bloodline',4,3,4,5)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Mistero" data-title="mindhunter">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://static.rogerebert.com/redactor_assets/pictures/5d573630b8b50d0dc4ea310e/content_Mindhunter_S2_Vertical_Main_RGB_EN.jpg" alt="Copertina MINDHUNTER" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">MINDHUNTER</div></div>
+<div class="info"><span class="tag">Mistero</span><h2>MINDHUNTER</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 2 stagioni</span><span>⭐ 8,7/10</span></div>
+<p>Due agenti FBI studiano la mente degli assassini seriali. Psicologica, inquietante e piena di tensione; meno azione, più mistero.</p><button class="more" onclick="showDetail('MINDHUNTER',3,3,5,5)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Crime" data-title="bosch">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://images.justwatch.com/poster/8637366/s718/temporada-1.jpg" alt="Copertina Bosch" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Bosch</div></div>
+<div class="info"><span class="tag">Crime</span><h2>Bosch</h2>
+<div class="meta"><span>📺 Amazon Prime Video</span><span>📚 7 stagioni</span><span>⭐ 8,4/10</span></div>
+<p>Un detective di Los Angeles affronta omicidi, criminali e problemi interni alla polizia. Molto continuativa e con un protagonista forte.</p><button class="more" onclick="showDetail('Bosch',5,3,4,3)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Storica" data-title="vikings: valhalla">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://wegotthiscovered.com/wp-content/uploads/2022/12/EN-US_VVAL_S2_Main_Vertical_27x40_RGB_PRE.jpg" alt="Copertina Vikings: Valhalla" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Vikings: Valhalla</div></div>
+<div class="info"><span class="tag">Storica</span><h2>Vikings: Valhalla</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 3 stagioni</span><span>⭐ 8,9/10</span></div>
+<p>Sequel ambientato circa cento anni dopo Vikings: guerrieri, re, alleanze e battaglie. Storica, epica e continuativa.</p><button class="more" onclick="showDetail('Vikings: Valhalla',4,5,3,4)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Storica" data-title="the last kingdom">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://www.impawards.com/tv/posters/last_kingdom.jpg" alt="Copertina The Last Kingdom" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">The Last Kingdom</div></div>
+<div class="info"><span class="tag">Storica</span><h2>The Last Kingdom</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 5 stagioni</span><span>⭐ 9,1/10</span></div>
+<p>Uhtred, nato sassone e cresciuto tra i vichinghi, combatte tra regni e invasioni. Storica, cupa, lunga e piena di battaglie e politica.</p><button class="more" onclick="showDetail('The Last Kingdom',5,5,3,4)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Crime" data-title="gomorra: la serie">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://images.justwatch.com/poster/8228595/s718/gomorra.jpg" alt="Copertina Gomorra: La serie" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">Gomorra: La serie</div></div>
+<div class="info"><span class="tag">Crime</span><h2>Gomorra: La serie</h2>
+<div class="meta"><span>📺 Amazon Prime Video</span><span>📚 5 stagioni</span><span>⭐ 9,4/10</span></div>
+<p>Clan, faide, alleanze e lotte per il potere nella camorra napoletana. Cruda, cupa e con una storia che evolve per molte stagioni.</p><button class="more" onclick="showDetail('Gomorra: La serie',5,5,4,2)">Confronta / dettagli</button>
+</div></article><article class="card" data-category="Vampiri" data-title="v wars">
+<button class="remove" onclick="removeCard(this)" title="Nascondi">×</button>
+<div class="cover"><img src="https://es.web.img3.acsta.net/pictures/19/11/22/14/09/0693225.jpg" alt="Copertina V Wars" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="fallbackTitle">V Wars</div></div>
+<div class="info"><span class="tag">Vampiri</span><h2>V Wars</h2>
+<div class="meta"><span>📺 Netflix</span><span>📚 1 stagione</span><span>⭐ 7,4/10</span></div>
+<p>Una malattia trasforma le vittime in vampiri e divide la società. Più fantascienza, epidemia e complotti che romanticismo.</p><button class="more" onclick="showDetail('V Wars',2,4,3,4)">Confronta / dettagli</button>
+</div></article></section>
+<section id="compare"><h2>📊 Confronto rapido</h2><p class="sub">5 = molto alto · serve per capire subito quale serie è più vicina ai tuoi gusti.</p>
+<div class="tableWrap"><table><thead><tr><th>Serie</th><th>Piattaforma</th><th>Affinità</th><th>Continuità</th><th>Azione</th><th>Mistero</th><th>Storica/reale</th></tr></thead><tbody><tr><td><b>Banshee</b></td><td>Amazon Prime Video</td><td>9,5/10</td><td>★★★★★</td><td>★★★★★</td><td>★★★★</td><td>★★★</td></tr><tr><td><b>Top Boy</b></td><td>Netflix</td><td>9,3/10</td><td>★★★★★</td><td>★★★★</td><td>★★★★★</td><td>★★</td></tr><tr><td><b>Animal Kingdom</b></td><td>Amazon Prime Video</td><td>9,2/10</td><td>★★★★★</td><td>★★★★★</td><td>★★★★★</td><td>★★</td></tr><tr><td><b>Bloodline</b></td><td>Netflix</td><td>8,8/10</td><td>★★★★</td><td>★★★</td><td>★★★★</td><td>★★★★★</td></tr><tr><td><b>MINDHUNTER</b></td><td>Netflix</td><td>8,7/10</td><td>★★★</td><td>★★★</td><td>★★★★★</td><td>★★★★★</td></tr><tr><td><b>Bosch</b></td><td>Amazon Prime Video</td><td>8,4/10</td><td>★★★★★</td><td>★★★</td><td>★★★★</td><td>★★★</td></tr><tr><td><b>Vikings: Valhalla</b></td><td>Netflix</td><td>8,9/10</td><td>★★★★</td><td>★★★★★</td><td>★★★</td><td>★★★★</td></tr><tr><td><b>The Last Kingdom</b></td><td>Netflix</td><td>9,1/10</td><td>★★★★★</td><td>★★★★★</td><td>★★★</td><td>★★★★</td></tr><tr><td><b>Gomorra: La serie</b></td><td>Amazon Prime Video</td><td>9,4/10</td><td>★★★★★</td><td>★★★★★</td><td>★★★★</td><td>★★</td></tr><tr><td><b>V Wars</b></td><td>Netflix</td><td>7,4/10</td><td>★★</td><td>★★★★</td><td>★★★</td><td>★★★★</td></tr></tbody></table></div></section>
+<p class="note">× nasconde una serie su questo dispositivo. “Ripristina” le fa ricomparire. Se vuoi eliminare davvero un titolo dal catalogo, me lo dici e aggiorno il file.</p>
+</main>
+<div id="modal" class="modal" onclick="if(event.target===this)this.classList.remove('show')"><div class="box"><button class="close" onclick="document.getElementById('modal').classList.remove('show')">×</button><h2 id="mt"></h2><p id="md"></p></div></div>
+<script>
+const KEY='serie_catalogo_nascoste_v3';let removed=JSON.parse(localStorage.getItem(KEY)||'[]');
+function apply(){document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hidden',removed.includes(c.dataset.title)))}
+function removeCard(b){let c=b.closest('.card');removed=[...new Set([...removed,c.dataset.title])];localStorage.setItem(KEY,JSON.stringify(removed));c.classList.add('hidden')}
+function restoreAll(){removed=[];localStorage.setItem(KEY,'[]');apply()}
+function filterCards(cat,b){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hidden',removed.includes(c.dataset.title)||(cat!='Tutte'&&c.dataset.category!=cat)))}
+function showRemoved(){document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.card').forEach(c=>c.classList.toggle('hidden',!removed.includes(c.dataset.title)))}
+function showDetail(t,c,a,m,h){document.getElementById('mt').textContent=t;document.getElementById('md').innerHTML='Continuità: '+('★'.repeat(c))+'<br>Azione: '+('★'.repeat(a))+'<br>Mistero: '+('★'.repeat(m))+'<br>Storica/reale: '+('★'.repeat(h));document.getElementById('modal').classList.add('show')}
+apply();
+</script></body></html>
